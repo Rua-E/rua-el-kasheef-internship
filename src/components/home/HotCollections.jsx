@@ -1,9 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+import axios from 'axios';
+
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
+// import Skeleton from "../UI/Skeleton";
 
 const HotCollections = () => {
+
+// MAPPING THE AUTHORS
+const [authors, setAuthors] = useState([]);
+
+
+async function fetchCollection() {
+
+  try {
+    const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`);
+    setAuthors(data);
+  } catch (error) {
+    console.error("Error fetching, author", error);
+  }
+}
+
+useEffect(() => { 
+  fetchCollection();
+}, []);
+
+
+// OWL-CAROUSEL options (used owl-carousel because it was simple and easy to use and has all the options needed)
+const options = {
+  responsiveClass:true,
+  responsive: {
+    480: {
+      items: 1,
+    },
+    600: {
+      items: 1,
+    },
+    800: {
+      items: 2,
+    },
+    1000: {
+      items: 3,
+    },
+    1200: {
+      items: 4,
+    },
+  },
+  loop: true,
+  nav: true
+}
+
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
@@ -14,29 +63,44 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {new Array(4).fill(0).map((_, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
-              <div className="nft_coll">
-                <div className="nft_wrap">
-                  <Link to="/item-details">
-                    <img src={nftImage} className="lazy img-fluid" alt="" />
-                  </Link>
+            <OwlCarousel 
+              className='owl-carousel'
+              margin={10}
+              {...options}
+              >
+              {authors?.length > 0 && 
+                authors
+                .slice(0,6)
+                .map((author, index) => (
+                <div className="item active" key={index}>
+                  <div className="nft_coll">
+                    <div className="nft_wrap">
+                      <Link to={`/${author.title}`}>
+                        <div className="skeleton-box">
+                          <img src={author.nftImage} className="lazy img-fluid" alt="" />
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="nft_coll_pp">
+                      <Link to={`/author`}>
+                        <div className="skeleton-box rounded-full">
+                          <img className="lazy pp-coll" src={author.authorImage} alt="" />
+                        </div>
+                      </Link>
+                      <i className="fa fa-check"></i>
+                    </div>
+                    <div className="nft_coll_info">
+                        <div className="skeleton-box">
+                          <Link to={`/explore`}>
+                              <h4>{author.title}</h4>
+                          </Link>
+                          <span>ERC-{author.code}</span>
+                        </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="nft_coll_pp">
-                  <Link to="/author">
-                    <img className="lazy pp-coll" src={AuthorImage} alt="" />
-                  </Link>
-                  <i className="fa fa-check"></i>
-                </div>
-                <div className="nft_coll_info">
-                  <Link to="/explore">
-                    <h4>Pinky Ocean</h4>
-                  </Link>
-                  <span>ERC-192</span>
-                </div>
-              </div>
-            </div>
-          ))}
+              ))}
+          </OwlCarousel>
         </div>
       </div>
     </section>
