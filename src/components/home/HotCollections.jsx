@@ -34,7 +34,6 @@ const HotCollections = () => {
   const options = { 
     responsiveClass: true,
     dots: false,
-    loadingClass,
     responsive: {
       0: {items: 1 },
       480: {items: 1 },
