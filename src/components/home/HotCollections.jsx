@@ -22,7 +22,7 @@ const HotCollections = () => {
     } catch (error) {
       console.error("Error fetching, author", error);
     } finally {
-      setLoading(false);
+      setLoading(true);
     }
   }
 
@@ -68,28 +68,28 @@ if (loading) {
                   <div className="nft_coll w-full">
                     <div className="nft_wrap">
                       <Link to="/author.title">
-                        <div className="skeleton-box h-64 w-full">
+                        <div className="skeleton-box skeleton-box-img">
                           <img src={nftImage} className="lazy img-fluid invisible" alt="" />
                         </div>
                       </Link>
                     </div>
-                    <div className="nft_coll_pp ">
+                    <div className="nft_coll_pp">
                       <Link to="/author">
-                        <div className="skeleton-box rounded-full h-16 w-16">
-                          <img className="lazy pp-coll h-16 w-16 invisible rounded-full max-w-full h-auto" src={AuthorImage} alt="" />
-                        </div>
+                       <div className="skeleton-box skeleton-round">
+                          <img className="lazy pp-coll h-16 w-16 invisible" src={AuthorImage} alt="" />
+                       </div>
                       </Link>
                       <i className="fa fa-check"></i>
                     </div>
-                    <div className="nft_coll_info mt-3">
+                    <div className="nft_coll_info">
                           <Link to="/explore">
-                            <div className="skeleton-box h-6 w-3/4 mb-2">
-                              <h4 className="invisible"> author.title </h4>
+                            <div className="skeleton-box">
+                              <h4 className="invisible">(-placeholder-) </h4>
                             </div>
                             <br />
                           </Link>
-                          <div className="skeleton-box h-4 w-1/2">
-                            <span className="invisible">ERC-code</span>
+                          <div className="skeleton-box ">
+                            <h4 className="invisible">(-ERC#)-</h4>
                           </div>
                     </div>
                   </div>
@@ -141,15 +141,9 @@ if (loading) {
                       </div>
                     </div>
                   </div>
-
               ))}
               </OwlCarousel>
             ) 
-            // : ( 
-            //   <div className="col-12 text-center">
-            //      <p>No collections found</p> 
-            //   </div>
-            // )
           }
         </div>
       </div>
