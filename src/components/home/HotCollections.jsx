@@ -22,7 +22,7 @@ const HotCollections = () => {
     } catch (error) {
       console.error("Error fetching, author", error);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   }
 
