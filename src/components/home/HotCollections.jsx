@@ -123,7 +123,7 @@ const HotCollections = () => {
                 <div className="item" key={index}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
-                      <Link to={`/${author.nftId}`}>
+                      <Link to={`/item-details/${author.nftId}`}>
                         <img
                           src={author.nftImage}
                           className="lazy img-fluid"
