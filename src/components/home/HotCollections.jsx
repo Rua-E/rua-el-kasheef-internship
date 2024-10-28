@@ -59,11 +59,11 @@ if (loading) {
         </div>  
         <div className="d-flex ">
           <OwlCarousel 
-            className='owl-carousel'
+            className='owl-theme'
             margin={10}
             {...options}
             >
-            {new Array(4).fill(0).map((index) => (
+            {new Array(4).fill(0).map((_,index) => (
                   <div className="item" key={index}>
                   <div className="nft_coll w-full">
                     <div className="nft_wrap">
@@ -99,13 +99,11 @@ if (loading) {
             </div> 
       </div>
     </div>
-
     </section>
   );
  }
 
   return (
-    
     <section id="section-collections" className="no-bottom">
       <div className="container">
         <div className="row">
