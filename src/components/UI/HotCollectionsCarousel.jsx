@@ -34,7 +34,7 @@ const HotCollectionsCarousel = ({ hotCollectionsAuthors }) => {
             <div className="nft_wrap" style={{ height: '100%'}}>
                 <Link to={`/item-details/${hotAuthor.nftId}`}>
                 <img
-                    src={hotAuthor.nftImage}
+                    src={hotAuthor.nftImage || nftImage}
                     className="lazy img-fluid"
                     alt={hotAuthor.title}
                 />
@@ -44,7 +44,7 @@ const HotCollectionsCarousel = ({ hotCollectionsAuthors }) => {
                 <Link to={`/author/${hotAuthor.authorId}`}>
                 <img
                     className="lazy pp-coll"
-                    src={hotAuthor.authorImage}
+                    src={hotAuthor.authorImage || AuthorImage}
                     alt={hotAuthor.title}
                 />
                 </Link>

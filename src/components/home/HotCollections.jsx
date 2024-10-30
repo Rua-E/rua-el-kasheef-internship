@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import HotCollectionsCarousel from "../UI/HotCollectionsCarousel";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+import HotCollectionsCarousel from "../UI/HotCollectionsCarousel";
 import HotCollectionsLoading from "../UI/HotCollectionsLoading";
-import OwlCarousel from "react-owl-carousel";
 
 const HotCollections = () => {
   const [hotCollectionsAuthors, setHotCollectionsAuthors] = useState([]);
