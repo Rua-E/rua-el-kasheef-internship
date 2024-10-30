@@ -5,6 +5,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import HotCollectionsLoading from "../UI/HotCollectionsLoading";
+import OwlCarousel from "react-owl-carousel";
 
 const HotCollections = () => {
   const [hotCollectionsAuthors, setHotCollectionsAuthors] = useState([]);
@@ -38,7 +40,10 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <HotCollectionsCarousel hotCollectionsAuthors={hotCollectionsAuthors}/>
+          {
+          isHotCollectionsLoading ? 
+          (<HotCollectionsLoading />) : (<HotCollectionsCarousel hotCollectionsAuthors={hotCollectionsAuthors}/>)
+        }
         </div>
       </div>
     </section>
