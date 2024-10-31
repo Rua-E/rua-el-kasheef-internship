@@ -6,6 +6,7 @@ import NewItemsCarousel from "../UI/NewItemsCarousel";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import NewItemsLoading from "../UI/NewItemsLoading";
 
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
@@ -36,7 +37,9 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-        <NewItemsCarousel newItems={newItems}/>
+          {
+            isNewItemsLoading ? (<NewItemsLoading />) : (<NewItemsCarousel newItems={newItems}/>)
+          }
         </div>
       </div>
     </section>

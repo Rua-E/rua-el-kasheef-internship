@@ -18,7 +18,7 @@ const NewItemsCarousel = ({ newItems }) => {
         slideBy: 1,
         responsive: {
             0: { items: 1 },
-            480: { items: 1 },
+            400: { items: 1 },
             600: { items: 2 },
             800: { items: 3 },
             1000: { items: 3 },
@@ -27,10 +27,9 @@ const NewItemsCarousel = ({ newItems }) => {
     };
 
   return (
-    <div>
         <OwlCarousel {...options}>
         {newItems?.map((newItem, index) => (
-            <div className="items" key={index} >
+            <div className="item" key={index} >
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link
@@ -45,7 +44,8 @@ const NewItemsCarousel = ({ newItems }) => {
                 </div>
 {/* // TODO: COUNTDOWN FOR NEW ITEMS */}
                 <div className="de_countdown">5h 30m 32s</div>
-                <div className="nft__item_wrap">
+
+                <div className="nft__item_wrap" >
                   <div className="nft__item_extra">
                     <div className="nft__item_buttons">
                       <button>Buy Now</button>
@@ -63,7 +63,7 @@ const NewItemsCarousel = ({ newItems }) => {
                       </div>
                     </div>
                   </div>
-                  <Link to={`/item-details/${newItem.nftId}`}>
+                  <Link to={`/item-details/${newItem.nftId}`} >
                     <img
                       src={newItem.nftImage}
                       className="lazy nft__item_preview"
@@ -85,8 +85,7 @@ const NewItemsCarousel = ({ newItems }) => {
             </div>
           ))}
           </OwlCarousel>
-    </div>
-  )
-}
+  );
+};
 
 export default NewItemsCarousel
