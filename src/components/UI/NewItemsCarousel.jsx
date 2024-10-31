@@ -1,43 +1,12 @@
-import React, { useEffect, useState } from "react";
-
-import axios from "axios";
-import NewItemsCarousel from "../UI/NewItemsCarousel";
-
+import React from 'react';
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 
-const NewItems = () => {
-  const [newItems, setNewItems] = useState([]);
-  const [isNewItemsLoading, setIsNewItemsLoading] = useState(true);
-
-  async function fetchNewItems() {
-    try {
-      const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`);
-      setNewItems(data)
-    } catch (error) {
-      console.error('Error fetching data:', error)
-    } finally {
-      setIsNewItemsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchNewItems()
-  }, [])
-
+const NewItemsCarousel = ({ newItems }) => {
   return (
-    <section id="section-items" className="no-bottom">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="text-center">
-              <h2>New Items</h2>
-              <div className="small-border bg-color-2"></div>
-            </div>
-          </div>
-        {/* <NewItemsCarousel newItems={newItems}/> */}
-        {newItems?.map((newItem, index) => (
+    <div>
+        {/* {newItems.map((newItem, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft__item">
                 <div className="author_list_pp">
@@ -47,11 +16,10 @@ const NewItems = () => {
                     data-bs-placement="top"
                     // title={`Creator: ${newItem.authorId}`}
                   >
-                    <img className="lazy" src={newItem.authorImage} alt="" />
+                    <img className="lazy" src={newItem.AuthorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
-{/* // TODO: COUNTDOWN FOR NEW ITEMS */}
                 <div className="de_countdown">5h 30m 32s</div>
 
                 <div className="nft__item_wrap">
@@ -72,10 +40,9 @@ const NewItems = () => {
                       </div>
                     </div>
                   </div>
-
-                  <Link to={`/item-details/${newItem.nftId}`}>
+                  <Link to="/item-details">
                     <img
-                      src={newItem.nftImage}
+                      src={nftImage}
                       className="lazy nft__item_preview"
                       alt=""
                     />
@@ -83,21 +50,19 @@ const NewItems = () => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>{newItem.title}</h4>
+                    <h4>Pinky Ocean</h4>
                   </Link>
-                  <div className="nft__item_price">{newItem.price} ETH</div>
+                  <div className="nft__item_price">3.08 ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>{newItem.likes}</span>
+                    <span>69</span>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+          ))} */}
+    </div>
+  )
+}
 
-export default NewItems;
+export default NewItemsCarousel
