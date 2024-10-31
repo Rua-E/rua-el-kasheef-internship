@@ -11,11 +11,11 @@ import nftImage from "../../images/nftImage.jpg";
 const NewItemsCarousel = ({ newItems }) => {
 
     const options = {
-        items: 4,
         margin: 10,
         nav: true,
         items: 4,
         loop: true,
+        slideBy: 1,
         responsive: {
             0: { items: 1 },
             480: { items: 1 },
@@ -30,9 +30,7 @@ const NewItemsCarousel = ({ newItems }) => {
     <div>
         <OwlCarousel {...options}>
         {newItems?.map((newItem, index) => (
-            <div className="item" key={index} 
-            // style={{ display: "block", backgroundSize: "cover"}}
-            >
+            <div className="items" key={index} >
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link
