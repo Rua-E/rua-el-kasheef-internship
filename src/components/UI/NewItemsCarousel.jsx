@@ -7,6 +7,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import NewItemCounter from './NewItemCounter';
 
 const NewItemsCarousel = ({ newItems }) => {
 
@@ -42,8 +43,8 @@ const NewItemsCarousel = ({ newItems }) => {
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
-{/* // TODO: COUNTDOWN FOR NEW ITEMS */}
-                <div className="de_countdown">5h 30m 32s</div>
+
+                <NewItemCounter expiryDate={newItem.expiryDate} />
 
                 <div className="nft__item_wrap" >
                   <div className="nft__item_extra">
