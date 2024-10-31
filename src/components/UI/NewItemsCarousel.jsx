@@ -1,27 +1,52 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 
 const NewItemsCarousel = ({ newItems }) => {
+
+    const options = {
+        items: 4,
+        margin: 10,
+        nav: true,
+        items: 4,
+        loop: true,
+        responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            600: { items: 2 },
+            800: { items: 3 },
+            1000: { items: 3 },
+            1200: { items: 4 },
+        },
+    };
+
   return (
     <div>
-        {/* {newItems.map((newItem, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+        <OwlCarousel {...options}>
+        {newItems?.map((newItem, index) => (
+            <div className="item" key={index} 
+            // style={{ display: "block", backgroundSize: "cover"}}
+            >
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link
                     to={`/author/${newItem.authorId}`}
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    // title={`Creator: ${newItem.authorId}`}
+                    title={`Creator: ${newItem.authorId}`}
                   >
-                    <img className="lazy" src={newItem.AuthorImage} alt="" />
+                    <img className="lazy" src={newItem.authorImage || AuthorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
+{/* // TODO: COUNTDOWN FOR NEW ITEMS */}
                 <div className="de_countdown">5h 30m 32s</div>
-
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
                     <div className="nft__item_buttons">
@@ -40,9 +65,9 @@ const NewItemsCarousel = ({ newItems }) => {
                       </div>
                     </div>
                   </div>
-                  <Link to="/item-details">
+                  <Link to={`/item-details/${newItem.nftId}`}>
                     <img
-                      src={nftImage}
+                      src={newItem.nftImage}
                       className="lazy nft__item_preview"
                       alt=""
                     />
@@ -50,17 +75,18 @@ const NewItemsCarousel = ({ newItems }) => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>Pinky Ocean</h4>
+                    <h4>{newItem.title}</h4>
                   </Link>
-                  <div className="nft__item_price">3.08 ETH</div>
+                  <div className="nft__item_price">{newItem.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>69</span>
+                    <span>{newItem.likes}</span>
                   </div>
                 </div>
               </div>
             </div>
-          ))} */}
+          ))}
+          </OwlCarousel>
     </div>
   )
 }

@@ -27,9 +27,9 @@ const HotCollectionsCarousel = ({ hotCollectionsAuthors }) => {
     };
 
   return (
-    <OwlCarousel className='' {...options}>
+    <OwlCarousel {...options}>
         {hotCollectionsAuthors?.map((hotAuthor, index) => (
-        <div className="items" key={index}>
+        <div className="item" key={index}>
             <div className="nft_coll">
             <div className="nft_wrap" style={{ height: '100%'}}>
                 <Link to={`/item-details/${hotAuthor.nftId}`}>
