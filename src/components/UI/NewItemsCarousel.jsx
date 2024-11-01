@@ -12,11 +12,10 @@ import NewItemCounter from './NewItemCounter';
 const NewItemsCarousel = ({ newItems }) => {
 
     const options = {
+        items: 4,
         margin: 10,
         nav: true,
-        items: 4,
         loop: true,
-        slideBy: 1,
         responsive: {
             0: { items: 1 },
             400: { items: 1 },
@@ -30,27 +29,27 @@ const NewItemsCarousel = ({ newItems }) => {
   return (
         <OwlCarousel {...options}>
         {newItems?.map((newItem, index) => (
-            <div className="item" key={index} >
-              <div className="nft__item">
-                <div className="author_list_pp">
+            <div className="item"  key={index} >
+              <div className="nft__item" >
+                <div className="author_list_pp" >
                   <Link
                     to={`/author/${newItem.authorId}`}
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title={`Creator: ${newItem.authorId}`}
                   >
-                    <img className="lazy" src={newItem.authorImage || AuthorImage} alt="" />
-                    <i className="fa fa-check"></i>
+                        <img className="lazy" src={newItem.authorImage || AuthorImage} alt=""  />
+                        <i className="fa fa-check"></i>
                   </Link>
                 </div>
 
                 <NewItemCounter expiryDate={newItem.expiryDate} />
 
-                <div className="nft__item_wrap" >
-                  <div className="nft__item_extra">
-                    <div className="nft__item_buttons">
+                <div className="nft__item_wrap"  >
+                  <div className="nft__item_extra"  >
+                    <div className="nft__item_buttons" >
                       <button>Buy Now</button>
-                      <div className="nft__item_share">
+                      <div className="nft__item_share" >
                         <h4>Share</h4>
                         <a href="" target="_blank" rel="noreferrer">
                           <i className="fa fa-facebook fa-lg"></i>
