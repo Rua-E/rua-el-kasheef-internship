@@ -1,12 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import axios from "axios";
 
 const Explore = () => {
+  const [exploring, setExploring] = useState([]);
+  const [isExploreLoading, setIsExploreLoading] = useState(true);
+
+  async function fetchExplore() {
+    setIsExploreLoading(true);
+    try {
+    const { data } = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/explore');
+    setExploring(data);
+    } catch (error) {
+      console.error("Error loading, explore:", error);
+    } finally {
+      setIsExploreLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchExplore()
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-// TEST
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -32,7 +52,7 @@ const Explore = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-              <ExploreItems />
+              <ExploreItems exploring={exploring} setExploring={setExploring} />
             </div>
           </div>
         </section>
