@@ -5,6 +5,7 @@ import axios from "axios";
 
 const ExploreItems = ({ exploring, setExploring }) => {
   const [filter, setFilter] = useState("");
+  const [changeSlice, setChangeSlice] = useState(8);
 
   useEffect(() => {
     async function setFetchedFilter() {
@@ -18,6 +19,10 @@ const ExploreItems = ({ exploring, setExploring }) => {
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter)
   };
+
+  const handleSliceChange = () => {
+      setChangeSlice(changeSlice + 4);
+  }
 
  return (
     <>
@@ -34,7 +39,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-    {exploring?.slice(0,8).map((explore, index) => (
+    {exploring?.slice(0,changeSlice).map((explore, index) => (
         <div
           key={index}
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
@@ -47,7 +52,13 @@ const ExploreItems = ({ exploring, setExploring }) => {
         </div>
          ))}
       <div className="col-md-12 text-center">
-        <Link to="" id="loadmore" className="btn-main lead">
+        <Link 
+          to="" 
+          id="loadmore" 
+          className="btn-main lead"
+          onClick={handleSliceChange}
+          // invisible={setChangeSlice >= exploring.length}
+          >
           Load more
         </Link>
       </div>
