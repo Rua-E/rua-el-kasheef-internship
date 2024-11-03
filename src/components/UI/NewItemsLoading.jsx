@@ -27,6 +27,7 @@ const NewItemsLoading = () => {
           <i className="fa fa-check"></i>
         </div>
         <div className="nft__item_wrap">
+
           <div className="nft__item_extra">
             <div className="nft__item_buttons">
               <button>Buy Now</button>
@@ -44,6 +45,7 @@ const NewItemsLoading = () => {
               </div>
             </div>
           </div>
+
           <Skeleton height={350} width={"100%"} />
         </div>
         <div className="nft__item_info mt-2">
@@ -66,3 +68,4 @@ const NewItemsLoading = () => {
 };
 
 export default NewItemsLoading;
+
