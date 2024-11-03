@@ -5,8 +5,6 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import NewItemCounter from './NewItemCounter';
 
 const NewItemsCarousel = ({ newItems }) => {
@@ -38,7 +36,7 @@ const NewItemsCarousel = ({ newItems }) => {
                     data-bs-placement="top"
                     title={`Creator: ${newItem.authorId}`}
                   >
-                        <img className="lazy" src={newItem.authorImage || AuthorImage} alt=""  />
+                        <img className="lazy" src={newItem.authorImage} alt=""  />
                         <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -72,7 +70,7 @@ const NewItemsCarousel = ({ newItems }) => {
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to="/item-details">
+                  <Link to={`/item-details/${newItem.nftId}`}>
                     <h4>{newItem.title}</h4>
                   </Link>
                   <div className="nft__item_price">{newItem.price} ETH</div>
