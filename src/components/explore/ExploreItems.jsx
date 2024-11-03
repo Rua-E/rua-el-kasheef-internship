@@ -51,7 +51,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
         </select>
       </div>
 
-      {isNewItemsLoading ? (<><NewItemsLoading/><NewItemsLoading/> </>) : 
+      {isNewItemsLoading ? (<><NewItemsLoading/><NewItemsLoading/></>) : 
       (exploring?.slice(0,changeSlice).map((explore, index) => (
           <div
           key={index}
