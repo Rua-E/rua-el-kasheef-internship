@@ -20,7 +20,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
       } catch (error) {
         console.error("Error loading items:", error)
       } finally {
-        setIsNewItemsLoading(true);
+        setIsNewItemsLoading(false);
       }
     };
 
