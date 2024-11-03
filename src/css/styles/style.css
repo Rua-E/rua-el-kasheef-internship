@@ -13659,6 +13659,10 @@ a.read_more i {
   box-shadow: 2px 2px 30px 0px rgba(20, 20, 20, 0.1);
 }
 
+.owl-carousel.owl-drag .owl-item {
+  max-width: unset !important;
+}
+
 .nft__item:hover img.nft__item_preview {
   transform: scale(1.03);
 }

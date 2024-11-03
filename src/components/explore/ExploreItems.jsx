@@ -2,15 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthorItemCard from "../author/AuthorItemCard";
 import axios from "axios";
+import NewItemCounter from "../UI/NewItemCounter";
+import NewItemsLoading from "../UI/NewItemsLoading";
 
 const ExploreItems = ({ exploring, setExploring }) => {
   const [filter, setFilter] = useState("");
   const [changeSlice, setChangeSlice] = useState(8);
+  const [isNewItemsLoading, setIsNewItemsLoading] = useState(true);
 
   useEffect(() => {
     async function setFetchedFilter() {
-      const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${filter}`);
-      setExploring(data);
+      setIsNewItemsLoading(true);
+      try {
+
+        const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${filter}`);
+        setExploring(data);
+      } catch (error) {
+        console.error("Error loading items:", error)
+      } finally {
+        setIsNewItemsLoading(true);
+      }
     };
 
     setFetchedFilter();
@@ -39,18 +50,20 @@ const ExploreItems = ({ exploring, setExploring }) => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-    {exploring?.slice(0,changeSlice).map((explore, index) => (
-        <div
+
+      {isNewItemsLoading ? (<><NewItemsLoading/><NewItemsLoading/> </>) : 
+      (exploring?.slice(0,changeSlice).map((explore, index) => (
+          <div
           key={index}
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
           style={{ display: "block", backgroundSize: "cover" }}>
-
-{/* // TODO: ADD COUNTER */}
-            {/* <NewItemCounter expiryDate={explore.expiryDate}/> */}
+          <NewItemCounter expiryDate={explore.expiryDate}/>
           <AuthorItemCard explore={explore}/>
+          </div>)) 
+      )}
 
-        </div>
-         ))}
+
+          
       <div className="col-md-12 text-center">
         {changeSlice < exploring.length && (
         <Link 
@@ -58,7 +71,6 @@ const ExploreItems = ({ exploring, setExploring }) => {
           id="loadmore" 
           className="btn-main lead"
           onClick={handleSliceChange}
-          // invisible={setChangeSlice >= exploring.length}
           >
           Load more
         </Link>
