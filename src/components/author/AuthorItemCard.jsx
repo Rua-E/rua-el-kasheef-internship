@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AuthorItemCard = ({ explore }) => {
   return (
-    <div>
+ 
           <div className="nft__item">
             <div className="author_list_pp">
               <Link
@@ -48,7 +48,7 @@ const AuthorItemCard = ({ explore }) => {
               </div>
             </div>
             </div>
-    </div>
+  
   )
 }
 
