@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewItemsCarousel from "../UI/NewItemsCarousel";
 
+
+import { Link } from "react-router-dom";
+import AuthorImage from "../../images/author_thumbnail.jpg";
+import nftImage from "../../images/nftImage.jpg";
+
 import NewItemsLoading from "../UI/NewItemsLoading";
 
 const NewItems = () => {
@@ -10,7 +15,9 @@ const NewItems = () => {
   const [isNewItemsLoading, setIsNewItemsLoading] = useState(true);
 
   async function fetchNewItems() {
+
     setIsNewItemsLoading(true)
+
     try {
       const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`);
       setNewItems(data)

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const TopSellers = () => {
   const [topSellers, setTopSellers] = useState([]);
-  const [isTopSellersLoading, setTopSellersLoading] = useState(true)
+  const [isTopSellersLoading, setTopSellersLoading] = useState(true);
 
   async function fetchTopSellers() {
     setTopSellersLoading(true);
