@@ -52,6 +52,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
         </div>
          ))}
       <div className="col-md-12 text-center">
+        {changeSlice < exploring.length && (
         <Link 
           to="" 
           id="loadmore" 
@@ -61,6 +62,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
           >
           Load more
         </Link>
+        )}
       </div>
     </>
   );
