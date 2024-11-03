@@ -4,15 +4,20 @@ import AuthorItemCard from "../author/AuthorItemCard";
 import axios from "axios";
 
 const ExploreItems = ({ exploring, setExploring }) => {
-  async function sortItems(){
-    
-  }
-      };  
+  const [filter, setFilter] = useState("");
 
- useEffect(() => {
-  sortItems()
- },[]);
+  useEffect(() => {
+    async function setFetchedFilter() {
+      const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${filter}`);
+      setExploring(data);
+    };
 
+    setFetchedFilter();
+  }, [filter])
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter)
+  };
 
  return (
     <>
@@ -20,7 +25,8 @@ const ExploreItems = ({ exploring, setExploring }) => {
         <select 
           id="filter-items" 
           defaultValue=""
-          onChange={(event) => sortItems(event.target.value)}
+          value={filter}
+          onChange={(e) => handleFilterChange(e.target.value)}
         >
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
