@@ -15,7 +15,7 @@ const TopSellers = () => {
     } catch (error) {
         console.error('Error fetching, sellers:', error)
     } finally {
-      setTopSellersLoading(true);
+      setTopSellersLoading(false);
     }
   }
 
