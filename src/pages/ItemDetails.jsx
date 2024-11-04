@@ -4,17 +4,22 @@ import { Link, useParams } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import axios from "axios";
+import ItemDetailsLoading from "../components/UI/ItemDetailsLoading";
 
 const ItemDetails = () => {
   const { nftId } = useParams();
   const [itemDetails, setItemDetails] = useState([]);
+  const [itemDetailsLoading, setItemDetailsLoading] = useState(true);
 
   async function fetchItemDetails() {
+    setItemDetailsLoading(true);
     try {
       const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`)
       setItemDetails(data);
     } catch (error) {
       console.error('Error fetching Item Details:', error);
+    } finally {
+      setItemDetailsLoading(false);
     }
   }
 
@@ -24,7 +29,10 @@ const ItemDetails = () => {
   }, []);
 
   return (
-    <div id="wrapper">
+  <>
+  {itemDetailsLoading ? 
+  (<ItemDetailsLoading />) :
+    (<div id="wrapper">
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
@@ -100,6 +108,8 @@ const ItemDetails = () => {
         </section>
       </div>
     </div>
+     )}
+    </>
   );
 };
 
