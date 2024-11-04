@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import axios from "axios";
 import AuthorLoading from "../components/UI/AuthorLoading";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Author = () => {
   const [authors, setAuthors] = useState([]);
@@ -12,6 +13,7 @@ const Author = () => {
   const [isAuthorLoading, setAuthorLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
   const [followCount, setFollowCount] = useState(0);
+  const [copied, setCopied] = useState(false);
   
   useEffect(() => {
     async function fetchAuthors() {
@@ -33,6 +35,11 @@ const Author = () => {
   const handleFollowClick = () => {
     setIsFollowing(!isFollowing);
     setFollowCount(followCount => isFollowing ? (followCount - 1) : followCount + 1);
+  }
+  
+  const handleCopy = () => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500) // RESET AFTER 1.5 SECONDS
   }
 
   return (
@@ -67,9 +74,14 @@ const Author = () => {
                           <span id="wallet" className="profile_wallet">
                             {authors.address}
                           </span>
-                          <button id="btn_copy" title="Copy Text">
-                            Copy
-                          </button>
+                          <CopyToClipboard 
+                            onCopy={handleCopy}
+                            text={authors.address}
+                            >
+                              <button id="btn_copy" title="Copy Text">
+                                {copied ? "Copied!" : "Copy"}
+                              </button>
+                          </CopyToClipboard>
                         </h4>
                       </div>
                     </div>
