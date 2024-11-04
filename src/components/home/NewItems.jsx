@@ -43,7 +43,7 @@ const NewItems = () => {
             </div>
           </div>
           {
-            isNewItemsLoading ? (<NewItemsLoading />) : (<NewItemsCarousel newItems={newItems}/>)
+            isNewItemsLoading ? (<NewItemsLoading arrayNumber={4}/>) : (<NewItemsCarousel newItems={newItems}/>)
           }
         </div>
       </div>

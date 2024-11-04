@@ -20,10 +20,7 @@ const Explore = () => {
   }
 
   useEffect(() => {
-    fetchExplore()
-  }, []);
-
-  useEffect(() => {
+    fetchExplore();
     window.scrollTo(0, 0);
   }, []);
 
