@@ -58,7 +58,7 @@ const ExploreItems = ({ exploring, setExploring }) => {
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
           style={{ display: "block", backgroundSize: "cover" }}>
           <NewItemCounter expiryDate={explore.expiryDate}/>
-          <AuthorItemCard explore={explore}/>
+          <AuthorItemCard data={explore}/>
           </div>)) 
       )}
 

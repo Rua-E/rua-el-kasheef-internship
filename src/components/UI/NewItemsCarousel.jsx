@@ -34,7 +34,7 @@ const NewItemsCarousel = ({ newItems }) => {
                     to={`/author/${newItem.authorId}`}
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
-                    title={`Creator: ${newItem.authorId}`}
+                    title=""
                   >
                         <img className="lazy" src={newItem.authorImage} alt=""  />
                         <i className="fa fa-check"></i>
