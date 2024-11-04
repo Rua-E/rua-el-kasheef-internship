@@ -17,7 +17,7 @@ const TopSellersLoading = ({ topSellers }) => {
             </Link>
           </div>
           <div className="author_list_info">
-            <Link to={`/author/${topSeller.authorName}`}>
+            <Link to={`/author/${topSeller.authorId}`}>
               {topSeller.authorName}
             </Link>
             <span>{topSeller.price} ETH</span>
