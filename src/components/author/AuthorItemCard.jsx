@@ -7,7 +7,7 @@ const AuthorItemCard = ({ data, authors }) => {
     <div className="nft__item">
       <div className="author_list_pp">
         <Link
-          to={`/author/${data.authorId}`}
+          to={`/author/${data.authorId || authors.authorId}`}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
         >

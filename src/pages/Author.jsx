@@ -20,26 +20,25 @@ const Author = () => {
     setAuthorLoading(true);
     try {
       const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
+      setFollowCount(data.followers);
       setAuthors(data);
     } catch (error) {
       console.error('Error loading author:', error)
     } finally {
-      setFollowCount(authors.followers);
-      console.log(setFollowCount)
       setAuthorLoading(false);
     }
   }
-    fetchAuthors()
+    fetchAuthors();
   }, []);
 
   const handleFollowClick = () => {
     setIsFollowing(!isFollowing);
-    setFollowCount(followCount => isFollowing ? (followCount - 1) : followCount + 1);
+    setFollowCount(followCount => isFollowing ? (followCount - 1) : (followCount + 1));
   }
   
   const handleCopy = () => {
     setCopied(true);
-    setTimeout(() => setCopied(false), 1500) // RESET AFTER 1.5 SECONDS
+    setTimeout(() => setCopied(false), 1500) // RESET COPY BUTTON AFTER 1.5 SECONDS
   }
 
   return (
