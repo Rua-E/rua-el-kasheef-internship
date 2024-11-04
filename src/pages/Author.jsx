@@ -29,6 +29,7 @@ const Author = () => {
     }
   }
     fetchAuthors();
+    window.scrollTo(0, 0);
   }, []);
 
   const handleFollowClick = () => {
