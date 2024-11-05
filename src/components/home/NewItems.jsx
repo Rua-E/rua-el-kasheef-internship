@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
+
 import NewItemsCarousel from "../UI/NewItemsCarousel";
-
-
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
-
 import NewItemsLoading from "../UI/NewItemsLoading";
 
 const NewItems = () => {
@@ -15,22 +9,22 @@ const NewItems = () => {
   const [isNewItemsLoading, setIsNewItemsLoading] = useState(true);
 
   async function fetchNewItems() {
-
-    setIsNewItemsLoading(true)
-
+    setIsNewItemsLoading(true);
     try {
-      const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`);
-      setNewItems(data)
+      const { data } = await axios.get(
+        `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`
+      );
+      setNewItems(data);
     } catch (error) {
-      console.error('Error fetching data:', error)
+      console.error("Error fetching data:", error);
     } finally {
       setIsNewItemsLoading(false);
-    }
+    };
   }
 
   useEffect(() => {
-    fetchNewItems()
-  }, [])
+    fetchNewItems();
+  }, []);
 
   return (
     <section id="section-items" className="no-bottom">
@@ -42,9 +36,11 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {
-            isNewItemsLoading ? (<NewItemsLoading arrayNumber={4}/>) : (<NewItemsCarousel newItems={newItems}/>)
-          }
+          {isNewItemsLoading ? (
+            <NewItemsLoading arrayNumber={4} />
+          ) : (
+            <NewItemsCarousel newItems={newItems} />
+          )}
         </div>
       </div>
     </section>

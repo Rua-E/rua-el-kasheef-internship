@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
 const AuthorItemCard = ({ data, authors }) => {
-
   return (
     <div className="nft__item">
       <div className="author_list_pp">
@@ -11,7 +10,11 @@ const AuthorItemCard = ({ data, authors }) => {
           data-bs-toggle="tooltip"
           data-bs-placement="top"
         >
-          <img className="lazy" src={data.authorImage || authors.authorImage} alt="" />
+          <img
+            className="lazy"
+            src={data.authorImage || authors.authorImage}
+            alt=""
+          />
           <i className="fa fa-check"></i>
         </Link>
       </div>

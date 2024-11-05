@@ -36,10 +36,13 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {
-          isHotCollectionsLoading ? 
-          (<HotCollectionsLoading />) : (<HotCollectionsCarousel hotCollectionsAuthors={hotCollectionsAuthors}/>)
-        }
+          {isHotCollectionsLoading ? (
+            <HotCollectionsLoading />
+          ) : (
+            <HotCollectionsCarousel
+              hotCollectionsAuthors={hotCollectionsAuthors}
+            />
+          )}
         </div>
       </div>
     </section>
