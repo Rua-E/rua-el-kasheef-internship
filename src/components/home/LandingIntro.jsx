@@ -7,7 +7,7 @@ const LandingIntro = () => {
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-sm-30">
             <div className="feature-box f-boxed style-3">
-              <i className="bg-color-2 i-boxed icon_wallet"></i>
+              <i className="bg-color-2 i-boxed icon_wallet" ></i>
               <div className="text">
                 <h4 className="">Set up your wallet</h4>
                 <p>
