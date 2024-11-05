@@ -8,8 +8,8 @@ import AuthorLoading from "../components/UI/AuthorLoading";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Author = () => {
-  const [authors, setAuthors] = useState([]);
   const { authorId } = useParams();
+  const [authors, setAuthors] = useState([]);
   const [isAuthorLoading, setAuthorLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
   const [followCount, setFollowCount] = useState(0);
