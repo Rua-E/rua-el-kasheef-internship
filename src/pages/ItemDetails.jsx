@@ -19,7 +19,7 @@ const ItemDetails = () => {
     } catch (error) {
       console.error('Error fetching Item Details:', error);
     } finally {
-      setItemDetailsLoading(false);
+      setItemDetailsLoading(true);
     }
   }
 
