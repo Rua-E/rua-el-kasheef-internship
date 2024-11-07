@@ -7,7 +7,7 @@ const Animate = ({ children, options }) => {
 
   useEffect(() => {
     AOS.init({ // DEFAULT VALUES
-        duration: 1000,
+        duration: 1200,
         easing: "ease-in-out",
         mirror: false
     });
