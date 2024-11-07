@@ -5,17 +5,14 @@ import axios from "axios";
 
 const Explore = () => {
   const [exploring, setExploring] = useState([]);
-  const [isExploreLoading, setIsExploreLoading] = useState(true);
 
   async function fetchExplore() {
-    setIsExploreLoading(true);
     try {
     const { data } = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/explore');
     setExploring(data);
     } catch (error) {
       console.error("Error loading, explore:", error);
     } finally {
-      setIsExploreLoading(false);
     }
   }
 
