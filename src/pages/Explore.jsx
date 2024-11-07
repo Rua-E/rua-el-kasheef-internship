@@ -19,8 +19,8 @@ const Explore = () => {
   }
 
   useEffect(() => {
+    AOS.init();
     fetchExplore();
-      AOS.init();
     window.scrollTo(0, 0);
   }, []);
 

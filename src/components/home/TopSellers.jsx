@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import TopSeller from "../UI/TopSeller";
 import TopSellersLoading from "../UI/TopSellersLoading";
-import axios from "axios";
 
 const TopSellers = () => {
   const [topSellers, setTopSellers] = useState([]);
@@ -22,6 +26,7 @@ const TopSellers = () => {
   }
 
   useEffect(() => {
+    AOS.init();
     fetchTopSellers();
   }, []);
 
@@ -35,7 +40,7 @@ const TopSellers = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="col-md-12">
+          <div className="col-md-12" data-aos="fade-in">
             <ol className="author_list">
               {isTopSellersLoading ? (
                 <TopSellersLoading />
