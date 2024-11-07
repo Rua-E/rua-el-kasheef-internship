@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import NewItemsCarousel from "../UI/NewItemsCarousel";
 import NewItemsLoading from "../UI/NewItemsLoading";
 
@@ -23,13 +26,14 @@ const NewItems = () => {
   }
 
   useEffect(() => {
+    AOS.init();
     fetchNewItems();
   }, []);
 
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade-in" data-aos-easing="ease-in-out">
           <div className="col-lg-12">
             <div className="text-center">
               <h2>New Items</h2>

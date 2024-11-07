@@ -10,14 +10,14 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 const Author = () => {
   const { authorId } = useParams();
   const [authors, setAuthors] = useState([]);
-  const [isAuthorLoading, setAuthorLoading] = useState(true);
+  const [isAuthorLoading, setIsAuthorLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
   const [followCount, setFollowCount] = useState(0);
   const [copied, setCopied] = useState(false);
   
   useEffect(() => {
     async function fetchAuthors() {
-    setAuthorLoading(true);
+    setIsAuthorLoading(true);
     try {
       const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
       setFollowCount(data.followers);
@@ -25,7 +25,7 @@ const Author = () => {
     } catch (error) {
       console.error('Error loading author:', error)
     } finally {
-      setAuthorLoading(false);
+      setIsAuthorLoading(false);
     }
   }
     fetchAuthors();

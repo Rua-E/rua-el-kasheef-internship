@@ -2,30 +2,30 @@ import React, { useEffect, useState } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
 import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Explore = () => {
   const [exploring, setExploring] = useState([]);
-  const [isExploreLoading, setIsExploreLoading] = useState(true);
 
   async function fetchExplore() {
-    setIsExploreLoading(true);
     try {
     const { data } = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/explore');
     setExploring(data);
     } catch (error) {
       console.error("Error loading, explore:", error);
     } finally {
-      setIsExploreLoading(false);
     }
   }
 
   useEffect(() => {
+    AOS.init();
     fetchExplore();
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div id="wrapper">
+    <div id="wrapper"  >
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
 
@@ -46,9 +46,9 @@ const Explore = () => {
           </div>
         </section>
 
-        <section aria-label="section">
+        <section aria-label="section" >
           <div className="container">
-            <div className="row">
+            <div className="row" data-aos="fade-in" data-aos-easing="ease-in-out">
               <ExploreItems exploring={exploring} setExploring={setExploring} />
             </div>
           </div>
