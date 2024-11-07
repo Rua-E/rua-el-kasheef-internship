@@ -12,7 +12,7 @@ const LandingIntroCard = ({icon, title, description}) => {
               <Animate options={{ animation: 'fade-in', duration: 600 }} >
                   <h4 className="" >{title}</h4>
               </Animate>
-              <Animate options={{ animation: 'fade-up', delay: 25, duration: 800 }}>
+              <Animate options={{ animation: 'fade-up', delay: 200, duration: 800 }}>
                   <p>
                     {description}
                   </p>
