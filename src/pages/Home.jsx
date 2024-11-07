@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import BrowseByCategory from "../components/home/BrowseByCategory";
 import HotCollections from "../components/home/HotCollections";
 import Landing from "../components/home/Landing";
@@ -7,6 +7,7 @@ import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
 
 const Home = () => {
+ 
   useEffect(() => { 
     // TO SAVE THE SCROLL POSITION
     const saveScrollPosition = () => {
@@ -17,7 +18,7 @@ const Home = () => {
       const scrollPosition = sessionStorage.getItem('scrollPosition');
       if (scrollPosition) {
         window.scrollTo(scrollPosition, parseInt(scrollPosition, 10));
-      }
+      } 
     };
 
     restoreScrollPosition();
@@ -29,6 +30,10 @@ const Home = () => {
     };
 
   }, []);
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <div id="wrapper">

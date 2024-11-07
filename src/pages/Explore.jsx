@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
 import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Explore = () => {
   const [exploring, setExploring] = useState([]);
@@ -18,11 +20,12 @@ const Explore = () => {
 
   useEffect(() => {
     fetchExplore();
+      AOS.init();
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div id="wrapper">
+    <div id="wrapper"  >
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
 
@@ -43,9 +46,9 @@ const Explore = () => {
           </div>
         </section>
 
-        <section aria-label="section">
+        <section aria-label="section" >
           <div className="container">
-            <div className="row">
+            <div className="row" data-aos="fade-in">
               <ExploreItems exploring={exploring} setExploring={setExploring} />
             </div>
           </div>
