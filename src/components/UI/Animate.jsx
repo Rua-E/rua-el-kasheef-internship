@@ -1,22 +1,47 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useEffect, useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const Animate = ({ animations, animation, duration, delay, easing, once}) => {
-    useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
+const Animate = ({ children, options }) => {
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    AOS.init({ // DEFAULT VALUES
+        duration: 1000,
+        easing: "ease-in-out",
+        mirror: false
     });
+
+    // TO REFRESH AND TRIGGER ANIMATION WHEN NOT ON THE SCREEN
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          AOS.refreshHard();
+        }
+      });
+    });
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
   }, []);
 
   return (
-    <div data-aos={animation} data-aos-duration={duration} data-aos-delay={delay} data-aos-easing={easing} data-aos-once={once}>
-      {animations}
+    <div
+      ref={elementRef}
+      data-aos={options.animation}
+      data-aos-duration={options.duration}
+      data-aos-delay={options.delay}
+      data-aos-easing={options.easing}
+    >
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default Animate
+export default Animate;
