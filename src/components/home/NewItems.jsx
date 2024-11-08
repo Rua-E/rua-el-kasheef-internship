@@ -21,7 +21,7 @@ const NewItems = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setIsNewItemsLoading(false);
+      setIsNewItemsLoading(true);
     };
   }
 

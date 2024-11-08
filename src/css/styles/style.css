@@ -13684,6 +13684,19 @@ a.read_more i {
   width: 100%;
 }
 
+.nft__item_wrap_loading {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 250px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+
 .nft__item img {
   width: 100%;
   height: auto !important;
