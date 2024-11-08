@@ -4,8 +4,9 @@ import backgroundImage from "../../images/bg-shape-1.jpg";
 import { Link } from "react-router-dom";
 import Animate from "../UI/Animate";
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const Landing = () => {
   useEffect(() => {

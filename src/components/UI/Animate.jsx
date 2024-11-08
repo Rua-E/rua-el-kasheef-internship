@@ -10,6 +10,7 @@ const Animate = ({ children, options }) => {
         duration: 1200,
         easing: "ease-in-out",
         mirror: false
+
     });
 
     // TO REFRESH AND TRIGGER ANIMATION WHEN NOT ON THE SCREEN
