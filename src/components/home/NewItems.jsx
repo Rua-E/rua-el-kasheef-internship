@@ -5,11 +5,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import NewItemsCarousel from "../UI/NewItemsCarousel";
-
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-import NewItemsCarousel from "../UI/NewItemsCarousel";
 import NewItemsLoading from "../UI/NewItemsLoading";
 
 const NewItems = () => {
