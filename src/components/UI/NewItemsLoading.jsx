@@ -26,7 +26,7 @@ const NewItemsLoading = ({ arrayNumber }) => {
           <i className="fa fa-check"></i>
         </div>
         <div className="nft__item_wrap">
-          <Skeleton height={350} width={"100%"} />
+          <Skeleton height={225} width={"100%"} />
         </div>
         <div className="nft__item_info mt-2">
           <div>
