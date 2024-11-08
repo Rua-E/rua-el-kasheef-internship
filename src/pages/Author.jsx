@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
 import axios from "axios";
 import AuthorLoading from "../components/UI/AuthorLoading";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -105,7 +104,7 @@ const Author = () => {
                 <div className="de_tab tab_simple">
                   <AuthorItems 
                     authors={authors}
-                    nftCollection={authors.nftCollection}
+                    nftCollections={authors.nftCollection}
                     />
                 </div>
               </div>

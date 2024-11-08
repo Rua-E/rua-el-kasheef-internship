@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorItemCard from "../author/AuthorItemCard";
-import axios from "axios";
-import NewItemCounter from "../UI/NewItemCounter";
+
 import NewItemsLoading from "../UI/NewItemsLoading";
+import axios from "axios";
+import AuthorItemCard from "../author/AuthorItemCard";
 
 const ExploreItems = ({ exploring, setExploring }) => {
   const [filter, setFilter] = useState("");
@@ -52,19 +52,16 @@ const ExploreItems = ({ exploring, setExploring }) => {
       </div>
 
       {isNewItemsLoading ? (<NewItemsLoading arrayNumber={8}/>) : 
-      (exploring?.slice(0,changeSlice).map((explore, index) => (
+      (exploring?.slice(0,changeSlice).map((explore, id) => (
           <div
-          key={index}
-          className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-          style={{ display: "block", backgroundSize: "cover" }}>
-            
-          <NewItemCounter expiryDate={explore.expiryDate} />
-          <AuthorItemCard data={explore}/>
-          </div>)) 
+            key={id}
+            className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+            style={{ display: "block", backgroundSize: "cover" }}
+          >
+            <AuthorItemCard data={explore} />
+          </div>
+        ))
       )}
-
-
-          
       <div className="col-md-12 text-center">
         {changeSlice < exploring.length && (
         <Link 
