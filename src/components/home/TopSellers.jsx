@@ -14,17 +14,20 @@ const TopSellers = () => {
   async function fetchTopSellers() {
     setTopSellersLoading(true);
     try {
-    const { data } = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers');
-    setTopSellers(data);
+      const { data } = await axios.get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
+      );
+      setTopSellers(data);
     } catch (error) {
-        console.error('Error fetching, sellers:', error)
+      console.error("Error fetching, sellers:", error);
     } finally {
       setTopSellersLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchTopSellers()
+    AOS.init();
+    fetchTopSellers();
   }, []);
 
   return (
@@ -39,10 +42,11 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12" data-aos="fade-in" data-aos-easing="ease-in-out">
             <ol className="author_list">
-              {isTopSellersLoading ?
-              (<TopSellersLoading />) :
-              (<TopSeller topSellers={topSellers}/>)
-            }
+              {isTopSellersLoading ? (
+                <TopSellersLoading />
+              ) : (
+                <TopSeller topSellers={topSellers} />
+              )}
             </ol>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import React from "react";
 import Animate from "./Animate";
 
@@ -25,3 +26,4 @@ const LandingIntroCard = ({ icon, title, description }) => {
 };
 
 export default LandingIntroCard;
+

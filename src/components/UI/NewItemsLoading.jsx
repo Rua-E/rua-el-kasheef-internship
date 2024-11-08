@@ -1,25 +1,24 @@
 import React from "react";
 import Skeleton from "./Skeleton";
 
-const NewItemsLoading = ({ arrayNumber}) => {
+const NewItemsLoading = ({ arrayNumber }) => {
+  const options = {
+    margin: 10,
+    nav: true,
+    items: 4,
+    loop: true,
+    slideBy: 1,
+    responsive: {
+      0: { items: 1 },
+      400: { items: 1 },
+      600: { items: 2 },
+      800: { items: 3 },
+      1000: { items: 3 },
+      1200: { items: 4 },
+    },
+  };
 
-    const options = {
-        margin: 10,
-        nav: true,
-        items: 4,
-        loop: true,
-        slideBy: 1,
-        responsive: {
-            0: { items: 1 },
-            400: { items: 1 },
-            600: { items: 2 },
-            800: { items: 3 },
-            1000: { items: 3 },
-            1200: { items: 4 },
-        },
-    };
-
-  return (new Array(arrayNumber).fill(0).map((_, index) => (
+  return new Array(arrayNumber).fill(0).map((_, index) => (
     <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
       <div className="nft__item">
         <div className="author_list_pp">
@@ -44,9 +43,7 @@ const NewItemsLoading = ({ arrayNumber}) => {
         </div>
       </div>
     </div>
-  )))
-  
+  ));
 };
 
 export default NewItemsLoading;
-

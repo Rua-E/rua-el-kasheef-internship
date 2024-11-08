@@ -7,6 +7,7 @@ import Animate from "../UI/Animate";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 const Landing = () => {
   useEffect(() => {
     AOS.init();

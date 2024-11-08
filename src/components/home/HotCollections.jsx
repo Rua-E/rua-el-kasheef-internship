@@ -4,6 +4,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 import HotCollectionsCarousel from "../UI/HotCollectionsCarousel";
 import HotCollectionsLoading from "../UI/HotCollectionsLoading";
 
@@ -27,22 +28,26 @@ const HotCollections = () => {
 
   useEffect(() => {
     fetchCollection();
+    AOS.init();
   }, []);
 
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade-in" data-aos-easing="ease-in-out">
           <div className="col-lg-12">
             <div className="text-center">
               <h2>Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {
-          isHotCollectionsLoading ? 
-          (<HotCollectionsLoading />) : (<HotCollectionsCarousel hotCollectionsAuthors={hotCollectionsAuthors}/>)
-        }
+          {isHotCollectionsLoading ? (
+            <HotCollectionsLoading />
+          ) : (
+            <HotCollectionsCarousel
+              hotCollectionsAuthors={hotCollectionsAuthors}
+            />
+          )}
         </div>
       </div>
     </section>

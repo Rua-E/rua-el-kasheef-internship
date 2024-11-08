@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 const NewItemCounter = ({ expiryDate }) => {
   const [timeToExpire, setTimeToExpire] = useState(
     Math.floor(expiryDate / 1000) - // Convert expiryDate from ms to seconds.
-      Math.floor(Date.now() / 1000)
-  ); // Convert Date.Now into seconds so it can be subtracted
+      Math.floor(Date.now() / 1000) // Convert Date.Now into seconds so it can be subtracted
+  );
 
   // Set up the countdown
   useEffect(() => {

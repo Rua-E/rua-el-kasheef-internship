@@ -6,11 +6,11 @@ const Animate = ({ children, options }) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
-    AOS.init({
-      // DEFAULT VALUES
-      duration: 1200,
-      easing: "ease-in-out",
-      mirror: false,
+    AOS.init({ // DEFAULT VALUES
+        duration: 1200,
+        easing: "ease-in-out",
+        mirror: false
+
     });
 
     // TO REFRESH AND TRIGGER ANIMATION WHEN NOT ON THE SCREEN

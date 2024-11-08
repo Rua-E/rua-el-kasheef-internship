@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
+
 import NewItemCounter from '../UI/NewItemCounter';
 
 const AuthorItemCard = ({ data, authorImageData }) => {
@@ -13,6 +14,7 @@ const AuthorItemCard = ({ data, authorImageData }) => {
     nftId,
     expiryDate,
   } = data;
+
   return (
     <div className="nft__item">
       <div className="author_list_pp">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import NewItemsLoading from "../UI/NewItemsLoading";
 import axios from "axios";
 import AuthorItemCard from "../author/AuthorItemCard";
@@ -14,32 +13,33 @@ const ExploreItems = ({ exploring, setExploring }) => {
     async function setFetchedFilter() {
       setIsNewItemsLoading(true);
       try {
-
-        const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${filter}`);
+        const { data } = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${filter}`
+        );
         setExploring(data);
       } catch (error) {
-        console.error("Error loading items:", error)
+        console.error("Error loading items:", error);
       } finally {
         setIsNewItemsLoading(false);
       }
-    };
+    }
 
     setFetchedFilter();
-  }, [filter])
+  }, [filter]);
 
   const handleFilterChange = (newFilter) => {
-    setFilter(newFilter)
+    setFilter(newFilter);
   };
 
   const handleSliceChange = () => {
-      setChangeSlice(changeSlice + 4);
-  }
+    setChangeSlice(changeSlice + 4);
+  };
 
- return (
+  return (
     <>
       <div>
-        <select 
-          id="filter-items" 
+        <select
+          id="filter-items"
           defaultValue=""
           value={filter}
           onChange={(e) => handleFilterChange(e.target.value)}
@@ -50,7 +50,6 @@ const ExploreItems = ({ exploring, setExploring }) => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-
       {isNewItemsLoading ? (<NewItemsLoading arrayNumber={8}/>) : 
       (exploring?.slice(0,changeSlice).map((explore, id) => (
           <div
@@ -64,14 +63,14 @@ const ExploreItems = ({ exploring, setExploring }) => {
       )}
       <div className="col-md-12 text-center">
         {changeSlice < exploring.length && (
-        <Link 
-          to="" 
-          id="loadmore" 
-          className="btn-main lead"
-          onClick={handleSliceChange}
+          <Link
+            to=""
+            id="loadmore"
+            className="btn-main lead"
+            onClick={handleSliceChange}
           >
-          Load more
-        </Link>
+            Load more
+          </Link>
         )}
       </div>
     </>
