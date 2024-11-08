@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NewItemCounter from "../UI/NewItemCounter";
 
-const AuthorItemCard = ({ data, authors }) => {
+const AuthorItemCard = ({ data, authors}) => {
   return (
     <div className="nft__item">
       <div className="author_list_pp">
         <Link
-          to={`/author/${data.authorId || authors.authorId}`}
+          to={`/author/${authors.authorId}`}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
         >
           <img
             className="lazy"
-            src={data.authorImage || authors.authorImage}
+            src={authors.authorImage}
             alt=""
           />
           <i className="fa fa-check"></i>
